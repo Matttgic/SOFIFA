@@ -1,0 +1,38 @@
+name: 🧪 Test Scraping Sofifa (100 joueurs)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test-scrape:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📁 Cloner le dépôt
+        uses: actions/checkout@v3
+
+      - name: 🟩 Installer Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.12.1
+
+      - name: 📦 Installer les dépendances
+        run: npm install
+
+      - name: 🧹 Supprimer les anciens fichiers test
+        run: |
+          rm -f output/player-data-test.csv
+          rm -f output/checkpoint.txt
+
+      - name: 🧪 Lancer le scraping test (100 joueurs)
+        run: |
+          npm run download-urls-test
+          npm run test
+
+      - name: 💾 Commit du fichier test
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add output/player-data-test.csv output/checkpoint.txt || true
+          git commit -m "🧪 Test scraping 100 joueurs"
+          git push || echo "Pas de changement à pousser"

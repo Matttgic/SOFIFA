@@ -7,7 +7,9 @@
     "full": "node main.js full",
     "test": "node main.js test",
     "download-urls": "node main.js download-urls",
-    "download-urls-test": "node main.js download-urls-test"
+    "download-urls-test": "node main.js download-urls-test",
+    "lite-test": "node main-lite.js test",
+    "lite-urls-test": "node main-lite.js download-urls-test"
   },
   "repository": {
     "type": "git",

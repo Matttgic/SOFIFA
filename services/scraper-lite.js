@@ -2,9 +2,16 @@ const axios = require("axios");
 
 const asyncWait = ms => new Promise(resolve => setTimeout(resolve, ms));
 
+/**
+ * Récupère le contenu HTML d'une page Sofifa rapidement via axios.
+ * Réessaie jusqu'à 5 fois en cas d'échec réseau.
+ * @param {string} url
+ * @returns {Promise<string>} HTML de la page
+ */
 const getPageContentLite = async (url) => {
     let attempts = 5;
     let lastError = null;
+
     while (attempts > 0) {
         try {
             const headers = {
@@ -22,9 +29,11 @@ const getPageContentLite = async (url) => {
             attempts--;
         }
     }
+
     throw new Error(`Error fetching page ${url}: ${lastError?.message}`);
 };
 
+// ✅ Export sous le nom attendu ailleurs : getPageContent
 module.exports = {
-    getPageContentLite
+    getPageContent: getPageContentLite
 };

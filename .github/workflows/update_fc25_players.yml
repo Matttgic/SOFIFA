@@ -11,10 +11,10 @@ jobs:
       - name: 📁 Cloner le dépôt
         uses: actions/checkout@v3
 
-      - name: 🟩 Installer Node.js
+      - name: 🟩 Installer Node.js 20.18.1
         uses: actions/setup-node@v3
         with:
-          node-version: 18.12.1
+          node-version: 20.18.1
 
       - name: 📦 Installer les dépendances
         run: npm install

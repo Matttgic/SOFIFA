@@ -1,10 +1,10 @@
-name: 🧪 Test Scraping Sofifa (100 joueurs)
+name: ⚡ Scraping Sofifa Lite (100 joueurs)
 
 on:
   workflow_dispatch:
 
 jobs:
-  test-scrape:
+  scrape-lite:
     runs-on: ubuntu-latest
 
     steps:
@@ -19,20 +19,20 @@ jobs:
       - name: 📦 Installer les dépendances
         run: npm install
 
-      - name: 🧹 Supprimer les anciens fichiers test
+      - name: 🧹 Nettoyer les anciens fichiers test
         run: |
           rm -f output/player-data-test.csv
           rm -f output/checkpoint.txt
 
-      - name: 🧪 Lancer le scraping test (100 joueurs)
+      - name: ⚡ Lancer le scraping Lite
         run: |
-          npm run download-urls-test
-          npm run test
+          npm run lite-urls-test
+          npm run lite-test
 
-      - name: 💾 Commit du fichier test
+      - name: 💾 Commit des résultats
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add output/player-data-test.csv output/checkpoint.txt || true
-          git commit -m "🧪 Test scraping 100 joueurs"
+          git commit -m "⚡ Résultat du scraping Sofifa Lite"
           git push || echo "Pas de changement à pousser"

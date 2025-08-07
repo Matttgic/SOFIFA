@@ -1,6 +1,6 @@
 const cheerio = require('cheerio');
 const { getPageContent } = require('./scraper-lite');
-const { formatDate } = require('./../utils');
+const { formatDate } = require('./../utils/formatDate');
 
 async function getPlayerDetailsCsvRow(url) {
     const html = await getPageContent(url);

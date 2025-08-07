@@ -6,7 +6,8 @@
   "scripts": {
     "full": "node main.js full",
     "test": "node main.js test",
-    "download-urls":  "node main.js download-urls"
+    "download-urls": "node main.js download-urls",
+    "download-urls-test": "node main.js download-urls-test"
   },
   "repository": {
     "type": "git",
